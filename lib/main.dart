@@ -9,14 +9,20 @@ import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 
 void main() {
 
+ // Mengatur agar aplikasi mendukung orientasi potrait maupun landscape
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
+    // Mengatur agar aplikais mendukung orintasi landscape rata kiri
     DeviceOrientation.landscapeLeft,
+    // Mengatur agar aplikais mendukung orintasi landscape rata kanan
     DeviceOrientation.landscapeRight,
   ]);
 
       runApp(
+
+        // Mengatur agar saat aplikasi dijalankan, disaat itu juga, aplikasi meng-instansiasi appstate, objeck dari class ApplicationState 
+        
           ChangeNotifierProvider(
             create: (context) => ApplicationState(),
             builder: ((context, child) => const MyApp()),
@@ -24,6 +30,8 @@ void main() {
       );
 }
 
+// Router / pengalamatan proses authentikasi user menggunakan email.
+// Semua widget yang terdapat dalam go_router terdapat didalam package go_router
 final _router = GoRouter(
   routes: [
     GoRoute(
@@ -112,6 +120,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue),
         useMaterial3: true,
       ),
+
+      // Inisiasi router yang telah kita buat sebelumnya
       routerConfig: _router,
     );
   }

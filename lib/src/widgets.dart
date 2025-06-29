@@ -2,6 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+
+// File ini terdiri dari widget yang dapat digunakan sebagai komponen pendukung,
+// Widget ini diambil dari codelab berikut https://firebase.google.com/codelabs/firebase-get-to-know-flutter?authuser=0#4
+
 import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget {

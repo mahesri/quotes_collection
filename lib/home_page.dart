@@ -1,3 +1,9 @@
+// Implementasi layouting dalam file ini terinsipirasi dari codelab
+// https://codelabs.developers.google.com/codelabs/flutter-codelab-first#0
+
+// Class ini mengimplementasikan NavigationRail untuk pengalamatan 3 Page utama dalam aplikasi
+// 
+
 
 
 import 'package:flutter/cupertino.dart';
@@ -6,7 +12,6 @@ import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'src/authentication.dart';
-import 'src/widgets.dart';
 import 'app_state.dart';
 import 'quote.dart';
 import 'quotes_message.dart';
@@ -23,10 +28,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
 
+    // Logika pengaturan pengalamatan halaman dalam apliaksi
     Widget ?page;
     switch (selectedIndex) {
       case 0 :
 
+        // Seperti yang disebutkan dalam class ApplicationState, setiap 
+        // State login / belum login akan didengarkan di seluruh aplikasi.
+        // Salah satu contoh implementasinya adalah 1 baris dibawah ini :
         if (context.watch<ApplicationState>().loggedIn) {
           page = ListQuotes(quotes: context.watch<ApplicationState>().quotes);
         } else {
@@ -49,6 +58,9 @@ class _HomePageState extends State<HomePage> {
     }
 
     return LayoutBuilder(
+
+      // Mengatur agar halaman utama dibagi menjadi dua bagian,
+      // Sebelah kiri untuk  NavigationRail, dan menentukan areanya dengan safe area.
         builder: (context, constraints) {
           return Scaffold(
           body: Row(
@@ -92,6 +104,8 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+// Widget // Halaman login, ini ditampilkan diseluruh aplikasi saat user belum login.
+
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -131,12 +145,10 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
-
 }
 
-
+// Widget yang akan menampilkan form untuk menambahkan quotes baru
 class AddingQuotes extends StatelessWidget {
-
 
   @override
   Widget build(BuildContext context) {
@@ -163,25 +175,31 @@ class AddingQuotes extends StatelessWidget {
           endIndent: 20,
           color: Colors.deepPurple,
         ),
-        Consumer<ApplicationState>(
-          builder: (context, appState, _) => Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (appState.loggedIn) ...[
-                Quotes(
-                  addMessage: (message) =>
-                      appState.addQuotes(message),
-                ),
-              ]
-            ],
+
+        // Mengatur agar widget tidak overflow 
+        SingleChildScrollView(
+          child:  Consumer<ApplicationState>(
+            builder: (context, appState, _) => Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (appState.loggedIn) ...[
+                  Quotes(
+                    addMessage: (message) =>
+                        appState.addQuotes(message),
+                  ),
+                ]
+              ],
+            ),
           ),
-        )
+        ),
+
       ],
      ),
     );
   }
 }
 
+// Widget yang akan menampilkan daftar quotes
 class ListQuotes extends StatelessWidget {
   const ListQuotes({
     super.key,
@@ -199,6 +217,8 @@ class ListQuotes extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8),
       children: [
         for (var quote in quotes)
+
+        // Membungkus setiap quotes dengan card, 
           Card(
             margin: const EdgeInsets.all(8),
             elevation: 4,

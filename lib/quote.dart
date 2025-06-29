@@ -1,3 +1,7 @@
+// File ini berisi form untuk memasukan quotes.
+// Dalam file ini terdapat widget yang mendukung
+// Operasi input data text melalui widget TextFormField. 
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -15,8 +19,10 @@ class Quotes extends StatefulWidget{
 
 class _QuotesState extends State<Quotes> {
 
-
+// _formKey yang digunakan untuk mendeteksi error yang terjadi dalam form, dengan menggunakan "key" yang terdapat dalam form 
   final _formKey = GlobalKey<FormState>(debugLabel: '_QuotesState');
+
+  // _controller digunakan untuk merekam dan mendengarkan inputan dari user dari field
   final _controller = TextEditingController();
 
   @override
@@ -38,6 +44,7 @@ class _QuotesState extends State<Quotes> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a quote';
+                    
                   }
                   return null;
                 }
@@ -50,6 +57,7 @@ class _QuotesState extends State<Quotes> {
                   if (_formKey.currentState!.validate()) {
                     await widget.addMessage(_controller.text);
                     _controller.clear();
+                    print(_formKey);
                   }
                 },
                 child: Row(
