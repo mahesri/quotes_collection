@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "302434842921",
+    "project_id": "fir-flutter-codelab-f0fd2",
+    "storage_bucket": "fir-flutter-codelab-f0fd2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:302434842921:android:b3a44133bb79c73afcdf38",
+        "android_client_info": {
+          "package_name": "com.example.e_gallery"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFQXwEKPdf4XBAcQAXewrTXSeE_13Hsp8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:302434842921:android:bd7e57ac07a80f81fcdf38",
+        "android_client_info": {
+          "package_name": "com.example.gtk_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFQXwEKPdf4XBAcQAXewrTXSeE_13Hsp8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:302434842921:android:0a22d5047edd9e23fcdf38",
+        "android_client_info": {
+          "package_name": "com.example.quotes_collection"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFQXwEKPdf4XBAcQAXewrTXSeE_13Hsp8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
